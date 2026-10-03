@@ -20,4 +20,4 @@ java -cp out Main
 ```
 
 ## Author
-Jithu
+Pulibandla Jithendra Venkata Siva Sai
