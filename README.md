@@ -12,7 +12,6 @@ A command-line library manager built in Java.
 OOP, encapsulation, packages, ArrayList, exception handling
 
 ## How to run
-
 Requires JDK 17 or later.
 
 ```
@@ -20,9 +19,40 @@ javac -d out src/Main.java src/model/Book.java src/model/Library.java src/model/
 java -cp out Main
 ```
 
-## Sample run
+   ## Author
+   Pulibandla Jithendra Venkata Siva Sai
+=======
+## Sample Run
+PS C:\Users\DELL\OneDrive\Desktop\Library Management System> java -cp out Main
 
-```
+===== Library Menu =====
+1. Add book
+2. View all books
+3. Search by title
+4. Borrow book
+5. Return book
+6. Remove book
+0. Exit
+Enter choice: 1
+Enter book id
+1
+Enter book name
+Clean Code
+Enter book author name
+Robert Martin
+Book added
+
+===== Library Menu =====
+1. Add book
+2. View all books
+3. Search by title
+4. Borrow book
+5. Return book
+6. Remove book
+0. Exit
+Enter choice: 2
+1 | Clean Code by Robert Martin | Available
+
 ===== Library Menu =====
 1. Add book
 2. View all books
@@ -35,13 +65,25 @@ Enter choice: 4
 Enter book id to borrow: 1
 Book borrowed.
 
+===== Library Menu =====
+1. Add book
+2. View all books
+3. Search by title
+4. Borrow book
+5. Return book
+6. Remove book
+0. Exit
 Enter choice: 4
 Enter book id to borrow: 1
 Book is already borrowed.
 
+===== Library Menu =====
+1. Add book
+2. View all books
+3. Search by title
+4. Borrow book
+5. Return book
+6. Remove book
+0. Exit
 Enter choice: 0
 Goodbye!
-```
-
-## Author
-Pulibandla Jithendra Venkata Siva Sai
