@@ -19,9 +19,8 @@ javac -d out src/Main.java src/model/Book.java src/model/Library.java src/model/
 java -cp out Main
 ```
 
-## Author
-Pulibandla Jithendra Venkata Siva Sai
-<<<<<<< HEAD
+   ## Author
+   Pulibandla Jithendra Venkata Siva Sai
 =======
 ## Sample Run
 PS C:\Users\DELL\OneDrive\Desktop\Library Management System> java -cp out Main
