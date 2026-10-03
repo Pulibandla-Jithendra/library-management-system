@@ -21,3 +21,70 @@ java -cp out Main
 
 ## Author
 Pulibandla Jithendra Venkata Siva Sai
+<<<<<<< HEAD
+=======
+## Sample Run
+PS C:\Users\DELL\OneDrive\Desktop\Library Management System> java -cp out Main
+
+===== Library Menu =====
+1. Add book
+2. View all books
+3. Search by title
+4. Borrow book
+5. Return book
+6. Remove book
+0. Exit
+Enter choice: 1
+Enter book id
+1
+Enter book name
+Clean Code
+Enter book author name
+Robert Martin
+Book added
+
+===== Library Menu =====
+1. Add book
+2. View all books
+3. Search by title
+4. Borrow book
+5. Return book
+6. Remove book
+0. Exit
+Enter choice: 2
+1 | Clean Code by Robert Martin | Available
+
+===== Library Menu =====
+1. Add book
+2. View all books
+3. Search by title
+4. Borrow book
+5. Return book
+6. Remove book
+0. Exit
+Enter choice: 4
+Enter book id to borrow: 1
+Book borrowed.
+
+===== Library Menu =====
+1. Add book
+2. View all books
+3. Search by title
+4. Borrow book
+5. Return book
+6. Remove book
+0. Exit
+Enter choice: 4
+Enter book id to borrow: 1
+Book is already borrowed.
+
+===== Library Menu =====
+1. Add book
+2. View all books
+3. Search by title
+4. Borrow book
+5. Return book
+6. Remove book
+0. Exit
+Enter choice: 0
+Goodbye!
