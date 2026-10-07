@@ -69,7 +69,14 @@ src/
 ~~~
 
 The source root is src/. The model package contains the domain classes, and service.LibraryService coordinates operations between the catalog and members.
+## Future Improvements
 
+- Add PostgreSQL database
+- Build REST APIs using Spring Boot
+- Add user authentication
+- Add a web interface
+- Add borrowing history
+- Add due dates and fine calculation
 ## Author
 
 Pulibandla Jithendra Venkata Siva Sai
