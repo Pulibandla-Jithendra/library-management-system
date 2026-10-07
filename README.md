@@ -2,6 +2,10 @@
 
 A lightweight Java console application for managing a small library catalog and its members. It supports adding and listing books and members, borrowing and returning books, and enforces a three-book borrowing limit per member.
 
+## Demo
+
+![Library Management System console demo](screenshots/demo.png)
+
 ## Features
 
 - Add books and prevent duplicate book IDs
