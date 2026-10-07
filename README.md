@@ -1,89 +1,71 @@
 # Library Management System
 
-A command-line library manager built in Java.
+A lightweight Java console application for managing a small library catalog and its members. It supports adding and listing books and members, borrowing and returning books, and enforces a three-book borrowing limit per member.
 
 ## Features
-- Add, remove and view books
-- Search books by title (case-insensitive, partial match)
-- Borrow and return books
-- Input validation for menu and ids
 
-## Concepts used
-OOP, encapsulation, packages, ArrayList, exception handling
+- Add books and prevent duplicate book IDs
+- Add members and prevent duplicate member IDs
+- List the current books and members
+- Borrow and return books while keeping each member's borrowed-book list in sync
+- Limit each member to three borrowed books at a time
+- Validate numeric menu choices and IDs
+- Keep the catalog and member data in memory for the current run
 
-## How to run
-Requires JDK 17 or later.
+## Requirements
 
-```
+- Java Development Kit (JDK) 17 or later
+
+Check that Java and the compiler are available:
+
+~~~text
+java -version
+javac -version
+~~~
+
+## Build and run
+
+Run these commands from the repository root so the compiler can resolve the model and service packages.
+
+### Windows PowerShell
+
+~~~powershell
+New-Item -ItemType Directory -Force out | Out-Null
 javac -d out src/Main.java src/model/Book.java src/model/Library.java src/model/Member.java src/service/LibraryService.java
 java -cp out Main
-```
+~~~
 
-   ## Author
-   Pulibandla Jithendra Venkata Siva Sai
-=======
-## Sample Run
-PS C:\Users\DELL\OneDrive\Desktop\Library Management System> java -cp out Main
+### macOS or Linux
 
-===== Library Menu =====
-1. Add book
-2. View all books
-3. Search by title
-4. Borrow book
-5. Return book
-6. Remove book
-0. Exit
-Enter choice: 1
-Enter book id
-1
-Enter book name
-Clean Code
-Enter book author name
-Robert Martin
-Book added
+~~~sh
+mkdir -p out
+javac -d out src/Main.java src/model/Book.java src/model/Library.java src/model/Member.java src/service/LibraryService.java
+java -cp out Main
+~~~
 
-===== Library Menu =====
-1. Add book
-2. View all books
-3. Search by title
-4. Borrow book
-5. Return book
-6. Remove book
-0. Exit
-Enter choice: 2
-1 | Clean Code by Robert Martin | Available
+The compiled classes are written to out/, which is excluded from version control. The project has no external dependencies.
 
-===== Library Menu =====
-1. Add book
-2. View all books
-3. Search by title
-4. Borrow book
-5. Return book
-6. Remove book
-0. Exit
-Enter choice: 4
-Enter book id to borrow: 1
-Book borrowed.
+## Use
 
-===== Library Menu =====
-1. Add book
-2. View all books
-3. Search by title
-4. Borrow book
-5. Return book
-6. Remove book
-0. Exit
-Enter choice: 4
-Enter book id to borrow: 1
-Book is already borrowed.
+Start the program and choose an option from the menu. Add a book and a member before borrowing. Enter the member ID and book ID when prompted to borrow or return a book. Select 0 to exit.
 
-===== Library Menu =====
-1. Add book
-2. View all books
-3. Search by title
-4. Borrow book
-5. Return book
-6. Remove book
-0. Exit
-Enter choice: 0
-Goodbye!
+All data is held in memory and is cleared when the program exits.
+
+## Project structure
+
+~~~text
+src/
+├── Main.java                 # Console menu and input handling
+├── model/
+│   ├── Book.java              # Book data and availability
+│   ├── Library.java           # Book catalog operations
+│   └── Member.java            # Member data and borrowed books
+└── service/
+    └── LibraryService.java   # Coordinates catalog and member operations
+~~~
+
+The source root is src/. The model package contains the domain classes, and service.LibraryService coordinates operations between the catalog and members.
+
+## Author
+
+Pulibandla Jithendra Venkata Siva Sai

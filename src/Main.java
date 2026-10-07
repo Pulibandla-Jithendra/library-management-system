@@ -1,86 +1,82 @@
-
 import java.util.Scanner;
+
+import model.Book;
+import service.LibraryService;
 
 public class Main {
 
+    private static final Scanner sc = new Scanner(System.in);
+    private static final LibraryService library = new LibraryService();
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        Library library = new Library();
+        int choice;
+        do {
+            printMenu();
+            choice = readInt("Choose an option: ");
+            handle(choice);
+        } while (choice != 0);
+        System.out.println("Goodbye!");
+    }
+
+    private static void printMenu() {
+        System.out.println("""
+
+                ===== Library Management System =====
+                1. Add book
+                2. View books
+                3. Add member
+                4. View members
+                5. Borrow book
+                6. Return book
+                0. Exit
+                """);
+    }
+
+    private static void handle(int choice) {
+        switch (choice) {
+            case 1 -> {
+                int id = readInt("Book id: ");
+                String title = readText("Title: ");
+                String author = readText("Author: ");
+                System.out.println(library.addBook(new Book(id, title, author))
+                        ? "Book added." : "Book id already exists.");
+            }
+            case 2 -> library.listBooks();
+            case 3 -> {
+                int id = readInt("Member id: ");
+                String name = readText("Name: ");
+                System.out.println(library.addMember(id, name)
+                        ? "Member added." : "Member id already exists.");
+            }
+            case 4 -> library.listMembers();
+            case 5 -> {
+                int memberId = readInt("Member id: ");
+                int bookId = readInt("Book id: ");
+                System.out.println(library.borrowBook(memberId, bookId));
+            }
+            case 6 -> {
+                int memberId = readInt("Member id: ");
+                int bookId = readInt("Book id: ");
+                System.out.println(library.returnBook(memberId, bookId));
+            }
+            case 0 -> { }
+            default -> System.out.println("Invalid option. Try again.");
+        }
+    }
+
+    private static int readInt(String prompt) {
         while (true) {
-            System.out.println("\n===== Library Menu =====");
-            System.out.println("1. Add book");
-            System.out.println("2. View all books");
-            System.out.println("3. Search by title");
-            System.out.println("4. Borrow book");
-            System.out.println("5. Return book");
-            System.out.println("6. Remove book");
-            System.out.println("0. Exit");
-            System.out.print("Enter choice: ");
-            int choice = readInt(sc);
-            switch (choice) {
-                case 1 -> {
-                    System.out.println("Enter book id");
-                    int id = readInt(sc);
-                    System.out.println("Enter book name");
-                    String bookname = sc.nextLine();
-                    System.out.println("Enter book author name");
-                    String authorname = sc.nextLine();
-                    if (library.addBook(new Book(id, bookname, authorname, true))) {
-                        System.out.println("Book added");
-                    } else {
-                        System.out.println("A book with this id already exists.");
-                    }
-                }
-                case 2 -> library.displayAllBooks();
-                case 3 -> {
-                    System.out.println("Enter book title");
-                    library.searchByTitle(sc.nextLine());
-                }
-                case 4 -> {
-                    System.out.print("Enter book id to borrow: ");
-                    int borrowId = readInt(sc);
-                    if (library.findById(borrowId) == null) {
-                        System.out.println("Book not found.");
-                    } else if (library.borrowBook(borrowId)) {
-                        System.out.println("Book borrowed.");
-                    } else {
-                        System.out.println("Book is already borrowed.");
-                    }
-                }
-                case 5 -> {
-                    System.out.print("Enter book id to return: ");
-                    if (library.returnBook(readInt(sc))) {
-                        System.out.println("Book returned.");
-                    } else {
-                        System.out.println("Book not found.");
-                    }
-                }
-                case 6 -> {
-                    System.out.println("Enter book id to remove");
-                    int removeid = readInt(sc);
-                    if (library.removeBook(removeid)) {
-                        System.out.println("The book removed");
-                    } else {
-                        System.out.println("The book not found");
-                    }
-                }
-                case 0 -> {
-                    System.out.println("Goodbye!");
-                    sc.close();
-                    return;
-                }
-                default -> System.out.println("Invalid choice. Try again.");
+            System.out.print(prompt);
+            try {
+                return Integer.parseInt(sc.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
             }
         }
     }
 
-    private static int readInt(Scanner sc) {
-        while (true) {
-            try {
-                return Integer.parseInt(sc.nextLine().trim());
-            } catch (NumberFormatException e) {
-                System.out.print("Please enter a valid number: ");
-            }
-        }
+    private static String readText(String prompt) {
+        System.out.print(prompt);
+        return sc.nextLine().trim();
     }
 }

@@ -1,51 +1,67 @@
+package model;
 
 public class Book {
 
     private final int id;
-    private String bookname;
-    private String authorname;
+    private String title;
+    private String author;
     private boolean isAvailable;
 
-    public Book(int id, String bookname, String authorname, boolean isAvailable) {
+    public Book(int id, String title, String author) {
+        this(id, title, author, true);
+    }
+
+    public Book(int id, String title, String author, boolean isAvailable) {
         this.id = id;
-        this.bookname = bookname;
-        this.authorname = authorname;
+        this.title = title;
+        this.author = author;
         this.isAvailable = isAvailable;
     }
 
-    //Getters
     public int getId() {
         return this.id;
     }
 
+    public String getTitle() {
+        return this.title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getBookName() {
-        return this.bookname;
+        return this.title;
+    }
+
+    public void setBookName(String name) {
+        this.title = name;
+    }
+
+    public String getAuthor() {
+        return this.author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getAuthorName() {
-        return this.authorname;
+        return this.author;
+    }
+
+    public void setAuthorName(String name) {
+        this.author = name;
     }
 
     public boolean isAvailable() {
         return this.isAvailable;
     }
 
-    //Setter
-    public void setBookName(String name) {
-        this.bookname = name;
+    public void setAvailable(boolean available) {
+        this.isAvailable = available;
     }
 
-    public void setAuthorName(String name) {
-        this.authorname = name;
-    }
-
-    // public void borrowBook() {
-    //     if (isAvailable) {
-    //         this.isAvailable = false; 
-    //     }else {
-    //         System.out.println("Book is already borrowed");
-    //     }
-    //}
     public boolean borrowBook() {
         if (!isAvailable) {
             return false;
@@ -60,7 +76,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return id + " | " + bookname + " by " + authorname + " | " + (isAvailable ? "Available" : "Borrowed");
+        return id + " | " + title + " by " + author + " | " + (isAvailable ? "Available" : "Borrowed");
     }
-
 }
